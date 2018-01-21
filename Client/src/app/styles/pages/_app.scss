@@ -1,0 +1,42 @@
+.app {
+  padding: 2% 15%;
+}
+.Form {
+  width: 100%;
+  // height: 100vh;
+  margin: 0 auto;
+  position: sticky;
+  margin-top: 4px;
+  margin-bottom: 40px;
+
+  &__date-time {
+    text-align: center;
+  }
+
+  &__button {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  &__loading {
+    margin-top: 15px;
+  }
+}
+
+.List {
+  &>div {
+    margin-bottom: 30px;
+    padding: 15px;
+  }
+  .text-warning {
+    text-align: center;
+    color: $warning;
+  }
+}
+
+.todo-app {
+  .list-todo {
+    // height: 100vh;
+    // overflow: auto;
+  }
+}

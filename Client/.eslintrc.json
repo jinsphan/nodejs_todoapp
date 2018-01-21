@@ -1,0 +1,45 @@
+{
+  "env": {
+    "browser": "true"
+  },
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "quotes": ["error", "double"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/no-unescaped-entities": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/jsx-wrap-multilines": [
+      "error",
+      { "declaration": false, "assignment": false }
+    ],
+    "arrow-parens": ["error", "as-needed"],
+    "arrow-body-style": "off",
+    "no-underscore-dangle": "off",
+    "space-before-function-paren": "off",
+    "class-methods-use-this": "off",
+    "consistent-return": "off",
+    "react/forbid-prop-types": "off",
+    "react/no-unused-prop-types": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "default-case": "off",
+    "import/first": "off",
+    "import/no-mutable-exports": "off",
+    "global-require": "off",
+    "react/no-array-index-key": "off",
+    "no-mixed-operators": [
+        "error",
+        {
+            "groups": [
+                ["+", "-", "*", "/", "%", "**"],
+                ["&", "|", "^", "~", "<<", ">>", ">>>"],
+                ["==", "!=", "===", "!==", ">", ">=", "<", "<="],
+                ["&&", "||"],
+                ["in", "instanceof"]
+            ],
+            "allowSamePrecedence": true
+        }
+    ]
+  }
+}
