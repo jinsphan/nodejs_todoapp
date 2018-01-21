@@ -54,7 +54,15 @@ class Todo extends Component {
           deadline: `${this.state.todo.date_deadline} ${this.state.todo.time_deadline}`,
         };
         this.setState({ isAdding: true });
-        await this.props.addTodo(todo);
+        try {
+          await this.props.addTodo(todo);
+        } catch (er) {
+          this.setState({
+            errors: {
+              text: "todo's name has in your list todos.",
+            },
+          });
+        }
         this.setState({ isAdding: false });
       }
     });

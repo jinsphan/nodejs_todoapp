@@ -22,18 +22,24 @@ const getTodosById = (id, callback) => {
 }
 
 const addTodo = (user_id, todo, callback) => {
-  const statement = "INSERT INTO todos (user_id, name, deadline) VALUES(?, ?, ?)";
-  con.getConnection((err, sql) => {
-    sql.query(statement, [user_id, todo.name, todo.deadline], (er, result) => {
-      if (er) {
-        callback(true);
-      } else {
-        getTodosByUser(user_id, (er, result) => {
-          if (er) callback(true);
-          else callback(null, result[result.length-1]);
+  checkNameTodo(user_id, todo.name, check => {
+    if (check) {
+      const statement = "INSERT INTO todos (user_id, name, deadline) VALUES(?, ?, ?)";
+      con.getConnection((err, sql) => {
+        sql.query(statement, [user_id, todo.name, todo.deadline], (er, result) => {
+          if (er) {
+            callback(true);
+          } else {
+            getTodosByUser(user_id, (er, result) => {
+              if (er) callback(true);
+              else callback(null, result[result.length-1]);
+            })
+          }
         })
-      }
-    })
+      })
+    } else {
+      callback(true);
+    }
   })
 }
 
@@ -53,6 +59,16 @@ const deleteTodos = (user_id, arId, callback) => {
         })
       })
     }
+  })
+}
+
+checkNameTodo = (user_id, name, cb) => {
+  const statement = "SELECT name FROM todos WHERE todos.user_id = ? AND todos.name = ?";
+  con.getConnection((er, sql) => {
+    sql.query(statement, [user_id, name], (er, result) => {
+      if (er || result.length > 0) cb(false);
+      else cb(true);
+    })
   })
 }
 
