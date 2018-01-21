@@ -1,11 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import { Link } from "react-router-dom";
+import { RaisedButton, Subheader, List, ListItem, DropDownMenu, MenuItem, FlatButton, Checkbox } from "material-ui";
 import ActionDelete from "material-ui/svg-icons/action/delete";
-import Checkbox from "material-ui/Checkbox";
-import { List, ListItem, DropDownMenu, MenuItem } from "material-ui";
-import Subheader from "material-ui/Subheader";
-import RaisedButton from "material-ui/RaisedButton";
 import moment from "moment";
 
 const DoneBox = props => {
@@ -27,6 +24,9 @@ DoneBox.propTypes = {
 const ListTodo = props => {
   return (
     <div className="Todo-content">
+      <div style={{ textAlign: "right" }}>
+        <Link to="/login"><FlatButton label="Logout" rippleColor="red" secondary /></Link>
+      </div>
       <List className="list" style={{ minWidth: "300px" }} >
         <Subheader
           style={{

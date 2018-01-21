@@ -122,7 +122,7 @@ const changePassword = (req, res) => {
           res.status(500).send("Error update user");
         } else {
           res.status(200).json({
-            token: _jwtGenerate(req.body),
+            token: _jwtGenerate(req.payload),
           });
         }
       })
